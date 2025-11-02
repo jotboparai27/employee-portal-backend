@@ -14,12 +14,14 @@ import adminRequestRoutes from './routes/adminRequest.js';
 import dashboardRoutes from './routes/dashboard.js';
 import userRoutes from './routes/userRoutes.js';
 import logRoutes from './routes/logRoutes.js';
+import ping from './routes/ping.js';
 
 dotenv.config();
 connectDB();
 
 const app = express();
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 6000;
+
 
 // Middleware
 app.use(cors());
@@ -33,9 +35,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/clock', clockRoutes);
 app.use('/api/shifts', shiftRoutes);
 app.use('/api/requests', requestRoutes);
-app.use('/api/admin/requests', adminRequestRoutes); 
+app.use('/api/admin/requests', adminRequestRoutes);
 app.use('/api/dashboard', dashboardRoutes);
-app.use('/api/logs', logRoutes);  
+app.use('/api/logs', logRoutes);
+app.use('/api/ping', ping);
 
 // Test Route
 app.get('/api/test', (req, res) => {
